@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, lazy } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import { DappKitResponseStatus } from '@celo/utils'
@@ -9,18 +9,19 @@ import URLWarning from '../components/Header/URLWarning'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
-import AddLiquidity from './AddLiquidity'
 import {
   RedirectDuplicateTokenIds,
   RedirectOldAddLiquidityPathStructure,
   RedirectToAddLiquidity
 } from './AddLiquidity/redirects'
-import Pool from './Pool'
-import PoolFinder from './PoolFinder'
-import RemoveLiquidity from './RemoveLiquidity'
 import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
-import Swap from './Swap'
 import { OpenClaimAddressModalAndRedirectToSwap, RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
+
+const Swap = lazy(() => import('./Swap'))
+const Pool = lazy(() => import('./Pool'))
+const PoolFinder = lazy(() => import('./PoolFinder'))
+const AddLiquidity = lazy(() => import('./AddLiquidity'))
+const RemoveLiquidity = lazy(() => import('./RemoveLiquidity'))
 
 const AppWrapper = styled.div`
   display: flex;

@@ -85,7 +85,7 @@
     "@walletconnect/web3-provider": "1.1.1-alpha.0"
   },
   "scripts": {
-    "start": "HTTPS=true react-scripts start",
+    "start": "react-scripts start",
     "start:alfajores": "REACT_APP_CHAIN_ID=44787 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
