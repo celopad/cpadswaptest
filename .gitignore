@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules/*
-!/node_modules/@ubeswap
+!/node_modules/@ubeswap/*
 
 # testing
 /coverage
