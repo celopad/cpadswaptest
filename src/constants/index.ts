@@ -3,7 +3,7 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 import { injected, ledger, valora } from '../connectors'
 import { UBE } from './tokens'
 
-export const ROUTER_ADDRESS = '0xE3D8bd6Aed4F159bc8000a9cD47CffDb95F96121'
+export const ROUTER_ADDRESS = '0x58BEb321e392e62d51ec7a253b6CB5255D50590e'
 
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
