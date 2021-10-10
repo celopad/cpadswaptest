@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
-import { JSBI, Percent, Router, SwapParameters, Trade } from '@ubeswap/sdk'
+import { JSBI, Percent, Router, SwapParameters, Trade, TradeType } from '@ubeswap/sdk'
 import { useMemo } from 'react'
 import { BIPS_BASE, INITIAL_ALLOWED_SLIPPAGE } from '../constants'
 import { useTransactionAdder } from '../state/transactions/hooks'
@@ -69,16 +69,16 @@ function useSwapCallArguments(
     )
 
     // TODO(igm): figure out why this is failing
-    // if (trade.tradeType === TradeType.EXACT_INPUT) {
-    //   swapMethods.push(
-    //     Router.swapCallParameters(trade, {
-    //       feeOnTransfer: true,
-    //       allowedSlippage: new Percent(JSBI.BigInt(allowedSlippage), BIPS_BASE),
-    //       recipient,
-    //       deadline: deadline.toNumber()
-    //     })
-    //   )
-    // }
+    if (trade.tradeType === TradeType.EXACT_INPUT) {
+      swapMethods.push(
+        Router.swapCallParameters(trade, {
+          feeOnTransfer: true,
+          allowedSlippage: new Percent(JSBI.BigInt(allowedSlippage), BIPS_BASE),
+          recipient,
+          deadline: deadline.toNumber()
+        })
+      )
+    }
 
     return swapMethods.map(parameters => ({ parameters, contract }))
   }, [account, allowedSlippage, chainId, deadline, library, recipient, trade])
